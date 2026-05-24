@@ -1,0 +1,38 @@
+{
+  "title": "SIG Weight Scale (BLE)",
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Set up Weight Scale",
+        "description": "Found {count} SIG-compliant BLE weight scale(s). Select one or enter a MAC address manually.",
+        "data": { "address": "Device MAC address" }
+      },
+      "bluetooth_confirm": {
+        "title": "Confirm Weight Scale",
+        "description": "Do you want to set up **{name}** ({address})?"
+      }
+    },
+    "abort": {
+      "already_configured": "This device is already configured.",
+      "no_devices_found": "No SIG-compliant BLE weight scales were found nearby."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "User Data Service Settings",
+        "description": "Configure the consent settings for scales that support multiple user profiles (User Data Service, 0x181C).\n\nLeave **User Index** at {user_index_auto} to auto-detect. Set **Consent Code** to the PIN shown on your scale (usually 0). If you are setting up this scale for the first time, enable **Auto Register** to create a new user slot automatically.",
+        "data": {
+          "uds_user_index":    "User Index (0–254, or {user_index_auto} for auto)",
+          "uds_consent_code":  "Consent Code (PIN, 0–65535)",
+          "uds_auto_register": "Auto Register new user if index not found"
+        }
+      }
+    },
+    "error": {
+      "user_index_out_of_range":   "User Index must be between 0 and 255.",
+      "consent_code_out_of_range": "Consent Code must be between 0 and 65535."
+    }
+  }
+}
